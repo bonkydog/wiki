@@ -240,13 +240,15 @@ export default {
 
     this.initContentParsed = this.initContent ? Base64.decode(this.initContent) : ''
     this.$store.set('editor/content', this.initContentParsed)
-    if (this.mode === 'create' && !this.initEditor) {
-      _.delay(() => {
-        this.dialogEditorSelector = true
-      }, 500)
-    } else {
-      this.currentEditor = `editor${_.startCase(this.initEditor || 'markdown')}`
-    }
+    // if (this.mode === 'create' && !this.initEditor) {
+    //   _.delay(() => {
+    //     this.dialogEditorSelector = true
+    //   }, 500)
+    // } else {
+    //   this.currentEditor = `editor${_.startCase(this.initEditor || 'markdown')}`
+    // }
+
+    this.currentEditor = 'editorMarkdown'
 
     window.onbeforeunload = () => {
       if (!this.exitConfirmed && this.initContentParsed !== this.$store.get('editor/content')) {
